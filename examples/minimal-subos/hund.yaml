@@ -1,0 +1,15 @@
+manifestVersion: "0.1"
+id: dev.hundos.examples.hello
+name: Hello Sub-OS
+version: 0.1.0
+description: Minimal example manifest with no host capabilities.
+publisher: Hund OS examples
+runtime: ">=0.1.0 <0.2.0"
+languageVersion: "0.1"
+entrypoint: app/main.hund
+resources:
+  memoryMb: 64
+  cpuPercent: 10
+  maxOpenFiles: 16
+  executionTimeoutSeconds: 30
+capabilities: []
