@@ -1,0 +1,45 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://hund-os.dev/schemas/hund-subos-v0.1.schema.json",
+  "title": "Hund OS Sub-OS Manifest",
+  "description": "Draft schema for a hosted Hund OS Sub-OS package.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["manifestVersion", "id", "name", "version", "runtime", "entrypoint"],
+  "properties": {
+    "manifestVersion": { "const": "0.1" },
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9]*(\\.[a-z0-9-]+)+$"
+    },
+    "name": { "type": "string", "minLength": 1, "maxLength": 80 },
+    "version": { "type": "string", "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+([+-][0-9A-Za-z.-]+)?$" },
+    "description": { "type": "string", "maxLength": 500 },
+    "publisher": { "type": "string", "maxLength": 120 },
+    "runtime": { "type": "string", "minLength": 1, "maxLength": 40 },
+    "languageVersion": { "type": "string", "maxLength": 40 },
+    "entrypoint": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "^(?!/)(?!.*(?:^|/)\\.\\.(?:/|$))[A-Za-z0-9_./-]+$"
+    },
+    "resources": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "memoryMb": { "type": "integer", "minimum": 16, "maximum": 4096 },
+        "cpuPercent": { "type": "integer", "minimum": 1, "maximum": 100 },
+        "maxOpenFiles": { "type": "integer", "minimum": 1, "maximum": 1024 },
+        "executionTimeoutSeconds": { "type": "integer", "minimum": 1, "maximum": 86400 }
+      }
+    },
+    "capabilities": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "enum": ["storage.read", "storage.write", "network.outbound", "notifications", "device.display", "device.camera", "device.microphone"]
+      }
+    }
+  }
+}
