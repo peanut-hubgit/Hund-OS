@@ -1,0 +1,7 @@
+# Hund Language v0.1 example (illustrative syntax; no interpreter exists yet)
+
+subos "hello" {
+  on_start {
+    log("Hello from a Hund Sub-OS!")
+  }
+}
