@@ -1,0 +1,29 @@
+# Build outputs
+build/
+out/
+dist/
+target/
+.gradle/
+.idea/
+.vscode/
+*.class
+*.jar
+*.war
+*.dll
+*.so
+*.dylib
+*.exe
+
+# Generated and temporary files
+*.tmp
+*.log
+.DS_Store
+Thumbs.db
+
+# Local configuration and secrets
+.env
+.env.*
+!.env.example
+*.keystore
+*.jks
+secrets/
